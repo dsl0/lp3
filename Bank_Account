@@ -1,0 +1,31 @@
+// SPDX-License-Identifier:MIT
+// My First Smart Contract 
+
+pragma solidity >=0.4.0 <0.9.0;
+contract BankAccount {
+    uint public balance = 0;
+    
+    function setInitialBalance(uint initialBalance) public {
+        balance = initialBalance;
+    }
+
+    function deposit(uint depositAmount) public returns(uint, string memory){
+        balance = balance + depositAmount;
+        return (balance, "SuccessFul");
+    }
+
+    function withdraw(uint withdrawAmount) public returns(uint){
+        if(balance<=500){
+            return balance;
+        }
+        else if(withdrawAmount>balance){
+            return balance;
+        }
+        balance = balance - withdrawAmount;
+        return balance;
+    }
+
+    function showBalance() public view returns(uint){
+        return balance;
+    }
+}
